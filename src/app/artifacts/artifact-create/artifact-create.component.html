@@ -1,0 +1,114 @@
+<mat-card>
+
+  <form (submit)="onAddArtifact(artifactForm)" #artifactForm="ngForm">
+    <mat-form-field>
+      <mat-label>Artifact</mat-label>
+      <mat-select ngModel name="selectedArtifact" required>
+        <mat-option *ngFor="let artifact of artifact_list" [value]="artifact">
+          {{ artifact.name }} : {{ artifact.set }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Level</mat-label>
+      <input matInput type="number" min="0" [max]="selectedArtifact.maxLevel" ngModel name="inputLevel" required>
+    </mat-form-field>
+
+    <div class="statgroup">
+      <mat-form-field>
+        <mat-label>Main stat</mat-label>
+        <mat-select ngModel name="inputMainStat" required>
+          <mat-option *ngFor="let stat of stats" [value]="stat">
+            {{ stat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stat bonus</mat-label>
+        <input matInput type="text" ngModel name="inputMainStatBonus" required>
+      </mat-form-field>
+    </div>
+
+    <div class="statgroup">
+      <mat-form-field>
+        <mat-label>Substat 1</mat-label>
+        <mat-select ngModel name="inputSubStat1">
+          <mat-option *ngFor="let stat of stats" [value]="stat">
+            {{ stat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stat bonus</mat-label>
+        <input matInput type="text" ngModel name="inputSubStat1Bonus">
+      </mat-form-field>
+    </div>
+
+    <div class="statgroup">
+      <mat-form-field>
+        <mat-label>Substat 2</mat-label>
+        <mat-select ngModel name="inputSubStat2">
+          <mat-option *ngFor="let stat of stats" [value]="stat">
+            {{ stat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stat bonus</mat-label>
+        <input matInput type="text" ngModel name="inputSubStat2Bonus">
+      </mat-form-field>
+    </div>
+
+    <div class="statgroup">
+      <mat-form-field>
+        <mat-label>Substat 3</mat-label>
+        <mat-select ngModel name="inputSubStat3">
+          <mat-option *ngFor="let stat of stats" [value]="stat">
+            {{ stat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stat bonus</mat-label>
+
+        <input matInput type="text" ngModel name="inputSubStat3Bonus">
+      </mat-form-field>
+    </div>
+
+    <div class="statgroup">
+      <mat-form-field>
+        <mat-label>Substat 4</mat-label>
+        <mat-select ngModel name="inputSubStat4">
+          <mat-option *ngFor="let stat of stats" [value]="stat">
+            {{ stat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stat bonus</mat-label>
+        <input matInput type="text" ngModel name="inputSubStat4Bonus">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Equipped to</mat-label>
+        <mat-select ngModel name="selectedCharacter">
+          <mat-option *ngFor="let character of characters" [value]="character">
+            <span *ngIf="character.length <= 0">Unequipped</span>
+            <span *ngIf="character.length >  0">{{ character }}</span>
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button
+            mat-raised-button
+            color="primary"
+            type="submit">Save artifact</button>
+  </form>
+</mat-card>
